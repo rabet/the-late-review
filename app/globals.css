@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@source "../app/**/*.{ts,tsx}";
+@source "../data/**/*.{ts,tsx}";
+
+:root {
+  --accent: #c0392b;
+  --ink: #0f0f0f;
+  --paper: #fafafa;
+  --muted: #888;
+  --border: #e0e0e0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-feature-settings: "liga" 1, "calt" 1, "ss01" 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Inter variable font ligatures */
+.ligatures {
+  font-feature-settings: "liga" 1, "calt" 1, "dlig" 1;
+}
