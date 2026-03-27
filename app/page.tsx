@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { poems } from "@/data/poems";
+import { getAllPoems } from "@/lib/poems";
 
 export default function Home() {
+  const poems = getAllPoems();
   const [featured, ...rest] = poems;
 
   return (

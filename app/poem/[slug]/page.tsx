@@ -1,9 +1,9 @@
-import { poems } from "@/data/poems";
+import { getAllPoems, getPoemBySlug } from "@/lib/poems";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
-  return poems.map((p) => ({ slug: p.slug }));
+  return getAllPoems().map((p) => ({ slug: p.slug }));
 }
 
 export default async function PoemPage({
@@ -12,7 +12,8 @@ export default async function PoemPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const poem = poems.find((p) => p.slug === slug);
+  const poems = getAllPoems();
+  const poem = getPoemBySlug(slug);
   if (!poem) notFound();
 
   const index = poems.indexOf(poem);
