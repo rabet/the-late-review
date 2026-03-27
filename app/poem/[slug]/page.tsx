@@ -13,10 +13,10 @@ export default async function PoemPage({
 }) {
   const { slug } = await params;
   const poems = getAllPoems();
-  const poem = getPoemBySlug(slug);
-  if (!poem) notFound();
+  const index = poems.findIndex((p) => p.slug === slug);
+  if (index === -1) notFound();
 
-  const index = poems.indexOf(poem);
+  const poem = poems[index];
   const next = poems[index + 1] ?? poems[0];
 
   return (
